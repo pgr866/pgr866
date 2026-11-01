@@ -1,0 +1,81 @@
+import { source } from '@/lib/source';
+import {
+  DocsBody,
+  DocsDescription,
+  DocsPage,
+  DocsTitle,
+  MarkdownCopyButton,
+  ViewOptionsPopover,
+} from 'fumadocs-ui/layouts/docs/page';
+import type { Metadata } from 'next';
+import { getBreadcrumbItems } from 'fumadocs-core/breadcrumb';
+import { notFound } from 'next/navigation';
+import { getMDXComponents } from '@/components/mdx';
+import { createRelativeLink } from 'fumadocs-ui/mdx';
+import { notesName, gitConfig } from '@/lib/layout.shared';
+
+export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
+  const params = await props.params;
+  const page = source.getPage(params.slug);
+  if (!page) notFound();
+
+  const MDX = page.data.body;
+  const markdown = [
+    `# ${page.data.title}`,
+    page.data.description,
+    await page.data.getText('processed'),
+  ]
+    .filter(Boolean)
+    .join('\n\n');
+
+  return (
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      breadcrumb={{ className: 'page-breadcrumb' }}
+      className="md:pt-9 xl:pt-12 md:in-data-[sidebar-collapsed=true]:pt-9 xl:in-data-[sidebar-collapsed=true]:pt-12"
+    >
+      <DocsTitle>{page.data.title}</DocsTitle>
+      <DocsDescription className="mb-0">
+        {page.data.description}
+      </DocsDescription>
+      <div className="page-actions flex flex-row gap-2 items-center border-b pb-6">
+        <MarkdownCopyButton
+          markdownUrl={`data:text/markdown;charset=utf-8,${encodeURIComponent(markdown)}`}
+        />
+        <ViewOptionsPopover
+          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/notes/${page.path}`}
+        />
+      </div>
+      <DocsBody>
+        <MDX
+          components={getMDXComponents({
+            a: createRelativeLink(source, page),
+          })}
+        />
+      </DocsBody>
+    </DocsPage>
+  );
+}
+
+export async function generateMetadata(
+  props: PageProps<'/notes/[[...slug]]'>,
+): Promise<Metadata> {
+  const page = source.getPage((await props.params).slug);
+  if (!page) notFound();
+
+  const folders = getBreadcrumbItems(page.url, source.getPageTree())
+    .map((item) => item.name)
+    .filter((name): name is string => typeof name === 'string');
+
+  return {
+    title: [page.data.title, folders.at(-1) ?? notesName].join(' | '),
+    ...(page.data.description !== 'Coming soon' && {
+      description: page.data.description,
+    }),
+  };
+}
+
+export async function generateStaticParams() {
+  return source.generateParams();
+}

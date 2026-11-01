@@ -1,0 +1,30 @@
+{
+  "name": "pgr866",
+  "dockerComposeFile": ["../compose.yaml", "compose.devcontainer.yaml"],
+  "initializeCommand": "docker compose --project-name pgr866 build app",
+  "service": "app",
+  "runServices": ["app"],
+  "remoteEnv": {
+    "GIT_CONFIG_COUNT": "1",
+    "GIT_CONFIG_KEY_0": "url.https://github.com/.insteadOf",
+    "GIT_CONFIG_VALUE_0": "git@github.com:"
+  },
+  "workspaceFolder": "/app",
+  "overrideCommand": true,
+  "postStartCommand": ["npm", "run", "dev"],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "git.openRepositoryInParentFolders": "always",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "yoavbls.pretty-ts-errors",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "unifiedjs.vscode-mdx"
+      ]
+    }
+  }
+}
