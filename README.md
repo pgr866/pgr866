@@ -78,7 +78,7 @@ A selection of projects where I put cloud automation, infrastructure as code and
 <table class="projects">
   <tr>
     <td align="left" valign="top" width="50%">
-      <h3><img src="assets/gcp.svg" alt="" height="22"> <a href="https://github.com/pgr866/microservices-demo">Security &amp; Resilience in Microservices Orchestration</a></h3>
+      <h3><img src="assets/online-boutique.svg" alt="" height="22"> <a href="https://github.com/pgr866/microservices-demo">Security &amp; Resilience in Microservices Orchestration</a></h3>
       <p>Master's thesis: Google's Online Boutique on Kubernetes in a 2×2 factorial experiment, to measure what security and resilience cost and what they buy in latency, isolation and recovery time.</p>
       <p><img src="https://img.shields.io/badge/status-in_progress-ff9558?style=flat-square" alt="In progress"></p>
       <p>
@@ -86,7 +86,7 @@ A selection of projects where I put cloud automation, infrastructure as code and
       </p>
     </td>
     <td align="left" valign="top" width="50%">
-      <h3><img src="assets/msc-soccer-project.png" alt="" height="22"> <a href="https://github.com/pgr866/msc-soccer-project">msc-soccer-project</a></h3>
+      <h3><img src="assets/msc-soccer-project.svg" alt="" height="22"> <a href="https://github.com/pgr866/msc-soccer-project">msc-soccer-project</a></h3>
       <p>Master's first-year project: a football players app whose front end switches between a Node and a Spring Boot microservices backend, shipped to Google Cloud Run by 4 CI and 4 CD pipelines.<br><br></p>
       <p><img src="https://img.shields.io/badge/status-completed-0ea5e9?style=flat-square" alt="Completed"></p>
       <p>
@@ -104,11 +104,11 @@ A selection of projects where I put cloud automation, infrastructure as code and
       </p>
     </td>
     <td align="left" valign="top" width="50%">
-      <h3><img src="assets/icons/logo.svg" alt="" height="22"> <a href="https://github.com/pgr866/pgr866">Portfolio &amp; Notes</a></h3>
+      <h3><img src="src/app/icon.svg" alt="" height="22"> <a href="https://github.com/pgr866/pgr866">Portfolio &amp; Notes</a></h3>
       <p>This site: my profile and cheatsheets, built with Next.js and deployed to GitHub Pages only when CI passes on main.</p>
       <p><img src="https://img.shields.io/badge/status-live-brightgreen?style=flat-square" alt="Live"></p>
       <p>
-      <img src="assets/nextjs.svg" alt="Next.js" height="26">&nbsp;&nbsp;<img src="assets/fumadocs.png" alt="Fumadocs" height="26">&nbsp;&nbsp;<img src="assets/typescript.svg" alt="TypeScript" height="26">&nbsp;&nbsp;<img src="assets/tailwindcss.svg" alt="Tailwind CSS" height="26">&nbsp;&nbsp;<img src="assets/actions.svg" alt="GitHub Actions" height="26">&nbsp;&nbsp;<img src="assets/docker.svg" alt="Docker" height="26">
+      <img src="assets/nextjs.svg" alt="Next.js" height="26">&nbsp;&nbsp;<img src="assets/fumadocs.svg" alt="Fumadocs" height="26">&nbsp;&nbsp;<img src="assets/typescript.svg" alt="TypeScript" height="26">&nbsp;&nbsp;<img src="assets/tailwindcss.svg" alt="Tailwind CSS" height="26">&nbsp;&nbsp;<img src="assets/actions.svg" alt="GitHub Actions" height="26">&nbsp;&nbsp;<img src="assets/docker.svg" alt="Docker" height="26">
       </p>
     </td>
   </tr>

@@ -40,8 +40,8 @@ import {
 } from 'react-icons/si';
 import { VscAzure } from 'react-icons/vsc';
 
-const GoogleCloudLogo = assetIcon('gcp.svg');
-const SoccerLogo = assetIcon('msc-soccer-project.png');
+const OnlineBoutiqueLogo = assetIcon('online-boutique.svg');
+const SoccerLogo = assetIcon('msc-soccer-project.svg');
 const StratifyLogo = assetIcon('stratify.svg');
 
 export type ProjectStatus = 'live' | 'in-progress' | 'completed';
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       'In progress: fault injection with Chaos Mesh under k6 load, MTTR and latency in Prometheus and Grafana, and delivery to AKS with Terraform, GitHub Actions and Argo CD',
     ],
     status: 'in-progress',
-    icon: GoogleCloudLogo,
+    icon: OnlineBoutiqueLogo,
     stack: [
       { name: 'Kubernetes', icon: SiKubernetes },
       { name: 'Istio', icon: SiIstio },
