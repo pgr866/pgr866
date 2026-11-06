@@ -15,20 +15,27 @@ import { getMDXComponents } from '@/components/mdx';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { gitConfig } from '@/lib/layout.shared';
 
-const assetsUrl = `https://raw.githubusercontent.com/${gitConfig.user}/${gitConfig.repo}/${gitConfig.branch}/assets/`;
+const rawUrl = `https://raw.githubusercontent.com/${gitConfig.user}/${gitConfig.repo}/${gitConfig.branch}/`;
 
-const resolveAsset = (src?: string) => src?.replace(/^assets\//, assetsUrl);
+// README images live in assets/ (or src/ for the app icon); serve them from the repo.
+const localPath = /^(?:assets|src)\//;
+
+const resolveAsset = (src?: string) =>
+  src && localPath.test(src) ? `${rawUrl}${src}` : src;
 
 const inlineLocalAssets = (markdown: string) =>
-  markdown.replace(/(src|srcset)="assets\/([^"]+)"/g, (match, attr, file) => {
-    try {
-      const mime = file.endsWith('.png') ? 'image/png' : 'image/svg+xml';
-      const data = readFileSync(`assets/${file}`).toString('base64');
-      return `${attr}="data:${mime};base64,${data}"`;
-    } catch {
-      return match;
-    }
-  });
+  markdown.replace(
+    /(src|srcset)="((?:assets|src)\/[^"]+)"/g,
+    (match, attr, file) => {
+      try {
+        const mime = file.endsWith('.png') ? 'image/png' : 'image/svg+xml';
+        const data = readFileSync(file).toString('base64');
+        return `${attr}="data:${mime};base64,${data}"`;
+      } catch {
+        return match;
+      }
+    },
+  );
 
 export default async function HomePage() {
   const readme = await readFile('README.md', 'utf8');
