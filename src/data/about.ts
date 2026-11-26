@@ -3,6 +3,7 @@ import {
   SiAngular,
   SiArgo,
   SiCilium,
+  SiClaudecode,
   SiDjango,
   SiDocker,
   SiGit,
@@ -255,6 +256,10 @@ export const skills: {
           { name: 'Azure DevOps', icon: VscAzureDevops },
           { name: 'Jira', icon: SiJira },
         ],
+      },
+      {
+        label: 'AI-assisted development',
+        items: [{ name: 'Claude Code', icon: SiClaudecode }],
       },
       {
         label: 'Methodologies',
